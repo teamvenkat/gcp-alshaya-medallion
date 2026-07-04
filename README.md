@@ -303,3 +303,24 @@ gs://gcp-alshaya-medallion-data/raw/olist/
 ```
 
 After uploading the data, the Bronze layer implementation will begin using PySpark on Dataproc.
+
+---
+
+## Configuration
+
+Project configuration is externalized using YAML files.
+
+```text
+config/
+└── gcp_config.yaml
+```
+
+The configuration currently manages:
+
+- Google Cloud Project
+- Storage Bucket
+- Local Dataset Location
+- GCS Layer Paths
+- Ingestion Settings
+
+This approach keeps the application code environment-independent and simplifies future enhancements such as multi-environment deployments and metadata-driven ingestion.

@@ -1,0 +1,41 @@
+# ==========================================================
+# GCP Project Configuration
+# ==========================================================
+
+project:
+  id: gcp-alshaya-medallion
+  region: asia-south1
+
+# ==========================================================
+# Google Cloud Storage
+# ==========================================================
+
+storage:
+  bucket: gcp-alshaya-medallion-data
+
+# ==========================================================
+# Local Paths
+# ==========================================================
+
+paths:
+  local_dataset: data/sample/kaggle/olist
+
+# ==========================================================
+# GCS Paths
+# ==========================================================
+
+gcs:
+  raw: raw/olist
+  bronze: bronze
+  silver: silver
+  gold: gold
+  archive: archive
+  logs: logs
+
+# ==========================================================
+# Ingestion
+# ==========================================================
+
+ingestion:
+  load_type: FULL
+  watermark_column: null
