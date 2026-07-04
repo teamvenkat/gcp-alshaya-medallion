@@ -1,0 +1,14 @@
+dataset_name: orders
+
+source_file: olist_orders_dataset.csv
+
+target_file: orders.csv
+
+target_path: raw/olist/orders
+
+load_type: FULL
+
+primary_key:
+  - order_id
+
+watermark_column: order_purchase_timestamp

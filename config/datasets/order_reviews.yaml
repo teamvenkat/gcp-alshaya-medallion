@@ -1,0 +1,14 @@
+dataset_name: order_reviews
+
+source_file: olist_order_reviews_dataset.csv
+
+target_file: order_reviews.csv
+
+target_path: raw/olist/order_reviews
+
+load_type: FULL
+
+primary_key:
+  - review_id
+
+watermark_column: null

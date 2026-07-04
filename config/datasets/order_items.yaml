@@ -1,0 +1,14 @@
+dataset_name: order_items
+
+source_file: olist_order_items_dataset.csv
+
+target_file: order_items.csv
+
+target_path: raw/olist/order_items
+
+load_type: FULL
+
+primary_key:
+  - order_id
+
+watermark_column: null

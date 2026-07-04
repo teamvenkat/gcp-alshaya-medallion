@@ -1,0 +1,14 @@
+dataset_name: geolocation
+
+source_file: olist_geolocation_dataset.csv
+
+target_file: geolocation.csv
+
+target_path: raw/olist/geolocation
+
+load_type: FULL
+
+primary_key:
+  - geolocation_zip_code_prefix
+
+watermark_column: null

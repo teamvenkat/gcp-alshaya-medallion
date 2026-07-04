@@ -1,0 +1,14 @@
+dataset_name: category_translation
+
+source_file: product_category_name_translation.csv
+
+target_file: category_translation.csv
+
+target_path: raw/olist/category_translation
+
+load_type: FULL
+
+primary_key:
+  - product_category_name
+
+watermark_column: null

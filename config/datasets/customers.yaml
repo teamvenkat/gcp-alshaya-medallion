@@ -1,0 +1,14 @@
+dataset_name: customers
+
+source_file: olist_customers_dataset.csv
+
+target_file: customers.csv
+
+target_path: raw/olist/customers
+
+load_type: FULL
+
+primary_key:
+  - customer_id
+
+watermark_column: null

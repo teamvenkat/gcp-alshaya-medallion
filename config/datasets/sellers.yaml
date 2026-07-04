@@ -1,0 +1,14 @@
+dataset_name: sellers
+
+source_file: olist_sellers_dataset.csv
+
+target_file: sellers.csv
+
+target_path: raw/olist/sellers
+
+load_type: FULL
+
+primary_key:
+  - seller_id
+
+watermark_column: null

@@ -1,0 +1,14 @@
+dataset_name: products
+
+source_file: olist_products_dataset.csv
+
+target_file: products.csv
+
+target_path: raw/olist/products
+
+load_type: FULL
+
+primary_key:
+  - product_id
+
+watermark_column: null

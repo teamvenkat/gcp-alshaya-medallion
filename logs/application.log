@@ -9,3 +9,5 @@
 2026-07-04 23:30:58 | INFO     | retail_platform.cloud.storage.storage_initializer | Created prefix: gold/
 2026-07-04 23:30:58 | INFO     | retail_platform.cloud.storage.storage_initializer | Created prefix: archive/
 2026-07-04 23:30:59 | INFO     | retail_platform.cloud.storage.storage_initializer | Created prefix: logs/
+2026-07-04 23:49:30 | INFO     | retail_platform.cloud.storage.gcs_uploader | Uploading 'README.md' to 'gs://gcp-alshaya-medallion-data/logs/readme_test_upload.md'
+2026-07-04 23:49:34 | INFO     | retail_platform.cloud.storage.gcs_uploader | Upload completed for 'README.md'
