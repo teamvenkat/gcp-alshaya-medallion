@@ -324,3 +324,24 @@ The configuration currently manages:
 - Ingestion Settings
 
 This approach keeps the application code environment-independent and simplifies future enhancements such as multi-environment deployments and metadata-driven ingestion.
+
+---
+
+## Configuration Management
+
+Application configuration is centralized through a configuration manager.
+
+```
+config/
+    gcp_config.yaml
+```
+
+Every Python module accesses configuration through:
+
+```python
+from common.config import config
+```
+
+rather than hardcoding values inside the application.
+
+This design improves maintainability and prepares the project for future multi-environment deployments.
