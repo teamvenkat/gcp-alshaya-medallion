@@ -2,34 +2,34 @@
 
 Enterprise-grade Retail Data Platform built on **Google Cloud Platform (GCP)** using the **Medallion Architecture (Bronze → Silver → Gold)**.
 
-> **Current Status:** 🚧 In Development
+> **Status:** 🚧 In Development
 
 ---
 
-## Project Objective
+# Project Objective
 
-This project demonstrates the implementation of an end-to-end retail data platform using Google Cloud Platform and the Medallion Architecture.
+This project demonstrates the implementation of an end-to-end Retail Data Platform using Google Cloud Platform.
 
-The objective is to build a scalable data engineering solution that ingests raw retail data, transforms it through Bronze, Silver, and Gold layers, and exposes business-ready datasets for analytics.
-
----
-
-## Technology Stack
-
-| Category        | Technology                      |
-| --------------- | ------------------------------- |
-| Cloud           | Google Cloud Platform (GCP)     |
-| Storage         | Google Cloud Storage            |
-| Processing      | Dataproc (PySpark)              |
-| Data Warehouse  | BigQuery                        |
-| Orchestration   | Cloud Composer (Apache Airflow) |
-| Reporting       | Looker Studio                   |
-| Language        | Python                          |
-| Version Control | Git & GitHub                    |
+The objective is to build a scalable data engineering solution that ingests raw retail data into Google Cloud Storage, processes it through the Medallion Architecture, stores curated datasets in BigQuery, and visualizes business insights using Looker Studio.
 
 ---
 
-## Repository Structure
+# Technology Stack
+
+| Category | Technology |
+|----------|------------|
+| Cloud | Google Cloud Platform |
+| Storage | Google Cloud Storage |
+| Processing | Dataproc (PySpark) |
+| Data Warehouse | BigQuery |
+| Orchestration | Cloud Composer (Airflow) |
+| Visualization | Looker Studio |
+| Language | Python |
+| Version Control | GitHub |
+
+---
+
+# Project Structure
 
 ```text
 gcp-alshaya-medallion/
@@ -38,8 +38,11 @@ gcp-alshaya-medallion/
 ├── config/
 ├── data/
 │   ├── sample/
+│   │   └── kaggle/
+│   │       └── olist/
 │   └── schemas/
 ├── docs/
+│   └── images/
 ├── sql/
 ├── src/
 │   ├── common/
@@ -50,55 +53,121 @@ gcp-alshaya-medallion/
 ├── tests/
 │
 ├── README.md
-├── LICENSE
+├── bootstrap.py
 ├── requirements.txt
-└── bootstrap.py
+└── .gitignore
 ```
 
 ---
 
-## Development Roadmap
+# Dataset
 
-* [x] Repository Setup
-* [ ] Retail Dataset Selection
-* [ ] GCS Data Ingestion
-* [ ] Bronze Layer
-* [ ] Silver Layer
-* [ ] Gold Layer
-* [ ] BigQuery Integration
-* [ ] Airflow Orchestration
-* [ ] Looker Studio Dashboard
+This project uses the **Brazilian E-Commerce Public Dataset by Olist**, available on Kaggle.
+
+The dataset contains information about:
+
+- Customers
+- Orders
+- Order Items
+- Payments
+- Products
+- Sellers
+- Reviews
+- Geolocations
+
+It closely resembles a real-world retail transactional system, making it an excellent dataset for implementing the Medallion Architecture.
 
 ---
 
-## Architecture
+# Dataset Schema
 
-```text
-Retail Dataset
-       │
-       ▼
-Google Cloud Storage
-       │
-       ▼
-Bronze Layer
-       │
-       ▼
-Silver Layer
-       │
-       ▼
-Gold Layer
-       │
-       ▼
-BigQuery
-       │
-       ▼
-Looker Studio
+The following diagram illustrates the relationships between the source datasets.
+
+> Place the image in `docs/images/olist-dataset-schema.png`
+
+<p align="center">
+    <img src="docs/images/olist-dataset-schema.png" width="900">
+</p>
+
+---
+
+# Current Progress
+
+## ✅ Completed
+
+- Repository setup
+- Initial project structure
+- Downloaded Olist dataset
+- Dataset added locally under
+
+```
+data/sample/kaggle/olist/
 ```
 
 ---
 
-## Current Focus
+## 🚧 In Progress
 
-The current phase focuses on delivering a working Medallion Architecture before introducing advanced engineering practices such as Infrastructure as Code, CI/CD, monitoring, and automated testing.
+- Understanding dataset relationships
+- Designing Medallion Architecture
 
-These capabilities will be added incrementally after the core data platform is complete.
+---
+
+# Development Roadmap
+
+- [x] Repository Setup
+- [x] Download Olist Dataset
+- [ ] Dataset Analysis
+- [ ] Data Model Design
+- [ ] Create GCP Project
+- [ ] Create GCS Buckets
+- [ ] Upload Raw Data
+- [ ] Bronze Layer
+- [ ] Silver Layer
+- [ ] Gold Layer
+- [ ] BigQuery
+- [ ] Airflow
+- [ ] Looker Studio Dashboard
+
+---
+
+# High-Level Architecture
+
+```
+                Kaggle (Olist Dataset)
+                         │
+                         ▼
+               Google Cloud Storage
+                         │
+                         ▼
+                 Bronze (Raw Layer)
+                         │
+                PySpark Transformations
+                         ▼
+                Silver (Clean Layer)
+                         │
+                Business Transformations
+                         ▼
+                 Gold (Analytics Layer)
+                         │
+                         ▼
+                    BigQuery
+                         │
+                         ▼
+                  Looker Studio
+```
+
+---
+
+# Next Milestone
+
+The next milestone is to analyze the Olist dataset and design the Medallion data model.
+
+This includes:
+
+- Identifying source entities
+- Understanding primary and foreign keys
+- Classifying fact and dimension tables
+- Defining Bronze, Silver, and Gold datasets
+- Designing the BigQuery target model
+
