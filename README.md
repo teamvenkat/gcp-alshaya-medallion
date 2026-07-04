@@ -459,3 +459,146 @@ Responsibilities:
 - Decouple ingestion logic from hardcoded file names
 
 This design allows the ingestion framework to scale as additional datasets are introduced.
+
+---
+
+# Dataset Metadata
+
+The ingestion framework is designed to be **metadata-driven**.
+
+Instead of hardcoding dataset information in the application, each source dataset is described using a dedicated YAML configuration file.
+
+```text
+config/
+└── datasets/
+    ├── customers.yaml
+    ├── orders.yaml
+    ├── order_items.yaml
+    ├── order_payments.yaml
+    ├── order_reviews.yaml
+    ├── products.yaml
+    ├── sellers.yaml
+    ├── geolocation.yaml
+    └── category_translation.yaml
+```
+
+Each metadata file contains:
+
+- Dataset Name
+- Source File
+- Target File
+- Target Storage Path
+- Load Type
+- Primary Key(s)
+- Watermark Column
+
+### Example
+
+```yaml
+dataset_name: orders
+
+source_file: olist_orders_dataset.csv
+
+target_file: orders.csv
+
+target_path: raw/olist/orders
+
+load_type: FULL
+
+primary_key:
+  - order_id
+
+watermark_column: order_purchase_timestamp
+```
+
+### Why Metadata?
+
+Using metadata instead of hardcoded values makes the ingestion framework:
+
+- Reusable
+- Easier to maintain
+- Ready for incremental ingestion
+- Ready for multiple source systems
+- Easily extensible for future enhancements
+
+---
+
+# Dataset Registry
+
+A centralized Dataset Registry loads all dataset metadata from the configuration directory.
+
+Location:
+
+```text
+src/
+└── retail_platform/
+    └── ingestion/
+        └── framework/
+            └── dataset_registry.py
+```
+
+Responsibilities:
+
+- Load dataset metadata
+- Discover available datasets
+- Retrieve dataset information
+- Decouple application logic from configuration
+
+The Dataset Registry acts as the single source of truth for all datasets managed by the ingestion framework.
+
+---
+
+# Google Cloud Storage Uploader
+
+A reusable Google Cloud Storage uploader has been implemented to handle file uploads into the Data Lake.
+
+Location:
+
+```text
+src/
+└── retail_platform/
+    └── cloud/
+        └── storage/
+            └── gcs_uploader.py
+```
+
+Responsibilities:
+
+- Connect to Google Cloud Storage
+- Upload local files
+- Log upload activity
+- Reusable across all ingestion pipelines
+
+Current capabilities:
+
+- Upload a single file
+- Configuration-driven bucket selection
+- Standardized logging
+- Reusable upload interface
+
+This component will be used by the ingestion orchestration process to upload all source datasets into the Raw layer of the Data Lake.
+
+---
+
+# Current Progress
+
+| Component | Status |
+|-----------|--------|
+| Repository Setup | ✅ |
+| Project Configuration | ✅ |
+| Configuration Manager | ✅ |
+| Logging Framework | ✅ |
+| File Validator | ✅ |
+| Storage Initializer | ✅ |
+| Dataset Discovery | ✅ |
+| Dataset Metadata | ✅ |
+| Dataset Registry | ✅ |
+| GCS Uploader | ✅ |
+| Upload Orchestrator | ⬜ |
+| Raw Data Upload | ⬜ |
+| Bronze Layer | ⬜ |
+| Silver Layer | ⬜ |
+| Gold Layer | ⬜ |
+| BigQuery | ⬜ |
+| Airflow | ⬜ |
+| Looker Studio Dashboard | ⬜ |
