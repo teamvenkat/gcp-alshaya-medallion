@@ -1,4 +1,4 @@
-from config import config
+from retail_platform.common.config import config
 
 print("Project ID :", config.get("project", "id"))
 print("Region     :", config.get("project", "region"))

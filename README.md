@@ -397,3 +397,65 @@ The validation framework has been designed to support future enhancements such a
 - Header validation
 - Duplicate detection
 - Business rule validation
+
+---
+
+## Data Lake Initialization
+
+The project initializes the Google Cloud Storage Data Lake before ingesting data.
+
+The initialization process:
+
+- Verifies the storage bucket exists.
+- Creates the Medallion layer prefixes.
+- Ensures the operation is idempotent.
+
+Logical bucket structure:
+
+```text
+gs://gcp-alshaya-medallion-data/
+
+raw/
+bronze/
+silver/
+gold/
+archive/
+logs/
+```
+
+This initialization is performed automatically before data ingestion.
+
+## Authentication
+
+The project uses **Application Default Credentials (ADC)** for local development.
+
+Configure ADC once using:
+
+```bash
+gcloud auth application-default login
+```
+
+This allows the Google Cloud Python SDK to authenticate without storing credentials in the project.
+
+> **Note:** In production, workloads will authenticate using Google Cloud Service Accounts rather than user credentials.
+
+
+---
+
+## Dataset Discovery
+
+The ingestion framework automatically discovers source datasets from the configured local directory.
+
+Location:
+
+```text
+src/retail_platform/ingestion/discovery/dataset_discovery.py
+```
+
+Responsibilities:
+
+- Discover available CSV datasets
+- Return datasets in a deterministic order
+- Decouple ingestion logic from hardcoded file names
+
+This design allows the ingestion framework to scale as additional datasets are introduced.

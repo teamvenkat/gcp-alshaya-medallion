@@ -2,3 +2,10 @@
 2026-07-04 22:52:37 | INFO     | __main__ | Logger initialized successfully.
 2026-07-04 22:52:37 | WARNING  | __main__ | This is a sample warning.
 2026-07-04 22:52:37 | ERROR    | __main__ | This is a sample error.
+2026-07-04 23:30:57 | INFO     | retail_platform.cloud.storage.storage_initializer | Bucket verified: gcp-alshaya-medallion-data
+2026-07-04 23:30:57 | INFO     | retail_platform.cloud.storage.storage_initializer | Created prefix: raw/
+2026-07-04 23:30:58 | INFO     | retail_platform.cloud.storage.storage_initializer | Created prefix: bronze/
+2026-07-04 23:30:58 | INFO     | retail_platform.cloud.storage.storage_initializer | Created prefix: silver/
+2026-07-04 23:30:58 | INFO     | retail_platform.cloud.storage.storage_initializer | Created prefix: gold/
+2026-07-04 23:30:58 | INFO     | retail_platform.cloud.storage.storage_initializer | Created prefix: archive/
+2026-07-04 23:30:59 | INFO     | retail_platform.cloud.storage.storage_initializer | Created prefix: logs/

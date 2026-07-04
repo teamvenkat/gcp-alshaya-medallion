@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from file_validator import FileValidator
+from retail_platform.ingestion.validators.file_validator import FileValidator
 
 DATASET = Path(
     "data/sample/kaggle/olist/olist_customers_dataset.csv"
