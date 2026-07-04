@@ -523,9 +523,69 @@ Using metadata instead of hardcoded values makes the ingestion framework:
 
 ---
 
+---
+
 # Dataset Registry
 
-A centralized Dataset Registry loads all dataset metadata from the configuration directory.
+The project uses a **metadata-driven Dataset Registry** to manage all datasets that participate in the ingestion framework.
+
+Instead of hardcoding file names and storage paths within the application, each dataset is described using an individual YAML configuration file.
+
+## Location
+
+```text
+config/
+└── datasets/
+```
+
+Current dataset configurations:
+
+```text
+customers.yaml
+orders.yaml
+order_items.yaml
+order_payments.yaml
+order_reviews.yaml
+products.yaml
+sellers.yaml
+geolocation.yaml
+category_translation.yaml
+```
+
+## Dataset Metadata
+
+Each dataset configuration contains:
+
+| Property | Description |
+|----------|-------------|
+| dataset_name | Logical dataset name |
+| source_file | Source file name |
+| target_file | Target file name in GCS |
+| target_path | Destination path inside the Data Lake |
+| load_type | FULL / INCREMENTAL |
+| primary_key | Business key(s) |
+| watermark_column | Column used for incremental ingestion |
+
+### Example
+
+```yaml
+dataset_name: orders
+
+source_file: olist_orders_dataset.csv
+
+target_file: orders.csv
+
+target_path: raw/olist/orders
+
+load_type: FULL
+
+primary_key:
+  - order_id
+
+watermark_column: order_purchase_timestamp
+```
+
+## Dataset Registry Component
 
 Location:
 
@@ -540,11 +600,31 @@ src/
 Responsibilities:
 
 - Load dataset metadata
-- Discover available datasets
-- Retrieve dataset information
-- Decouple application logic from configuration
+- Maintain the list of supported datasets
+- Provide dataset lookup methods
+- Act as the single source of truth for ingestion
 
-The Dataset Registry acts as the single source of truth for all datasets managed by the ingestion framework.
+The Dataset Registry enables the ingestion framework to remain metadata-driven, making it easier to add new datasets without modifying application code.
+
+---
+
+## Current Progress
+
+| Component | Status |
+|-----------|--------|
+| Repository Setup | ✅ |
+| GCP Foundation | ✅ |
+| Configuration Manager | ✅ |
+| Logging Framework | ✅ |
+| File Validator | ✅ |
+| Storage Initializer | ✅ |
+| Dataset Registry | ✅ |
+| GCS Uploader | ✅ |
+| Upload Orchestrator | 🟡 In Progress |
+| Raw Data Upload | ⬜ Pending |
+| Bronze Layer | ⬜ Pending |
+| Silver Layer | ⬜ Pending |
+| Gold Layer | ⬜ Pending |
 
 ---
 
