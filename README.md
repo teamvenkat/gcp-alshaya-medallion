@@ -83,11 +83,12 @@ It closely resembles a real-world retail transactional system, making it an exce
 
 The following diagram illustrates the relationships between the source datasets.
 
-> Place the image in `docs/images/olist-dataset-schema.png`
 
 <p align="center">
     <img src="docs/images/olist-dataset-schema.png" width="900">
 </p>
+
+Check out [Kaggle DataSet Link](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) for more details.
 
 ---
 
