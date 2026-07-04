@@ -195,10 +195,8 @@ order_status                object              0
 - [x] Repository Setup
 - [x] Download Olist Dataset
 - [x] Dataset Profiling
-- [ ] Source System Analysis
-- [ ] Data Modeling
-- [ ] Create GCP Project
-- [ ] Create Google Cloud Storage Buckets
+- [x] Create GCP Project
+- [x] Create Google Cloud Storage Buckets
 - [ ] Raw Data Ingestion
 - [ ] Bronze Layer
 - [ ] Silver Layer
@@ -209,24 +207,99 @@ order_status                object              0
 
 ---
 
-# Next Milestone
+# Google Cloud Foundation
 
-The next milestone is to perform a detailed analysis of the Olist source system.
+The Google Cloud foundation for the project has been provisioned using the Google Cloud CLI.
 
-Activities include:
+## GCP Project
 
-- Identify primary keys
-- Identify foreign keys
-- Understand relationships
-- Identify fact and dimension tables
-- Design Bronze layer
-- Design Silver layer
-- Design Gold layer
-
-This analysis will become the blueprint for implementing the Medallion Architecture.
+| Property | Value |
+|----------|-------|
+| Project Name | gcp-alshaya-medallion |
+| Platform | Google Cloud Platform |
 
 ---
 
-# License
+## Enabled Services
 
-This project is intended for learning and portfolio purposes.
+The following Google Cloud services are enabled.
+
+| Service | Purpose |
+|----------|----------|
+| Cloud Resource Manager API | Project management |
+| Cloud Storage API | Data Lake Storage |
+| BigQuery API | Analytical Data Warehouse |
+| Dataproc API | Distributed PySpark Processing |
+
+---
+
+## Data Lake
+
+A single Google Cloud Storage bucket is used as the Data Lake.
+
+```text
+gs://gcp-alshaya-medallion-data
+```
+
+### Bucket Structure
+
+```text
+gs://gcp-alshaya-medallion-data/
+
+raw/
+bronze/
+silver/
+gold/
+archive/
+logs/
+```
+
+The bucket follows the Medallion Architecture using logical prefixes rather than multiple buckets.
+
+---
+
+# Infrastructure Automation
+
+Google Cloud resources are provisioned using the Google Cloud CLI.
+
+Infrastructure scripts are maintained under:
+
+```text
+scripts/
+```
+
+Current scripts
+
+```text
+01-gcp-foundation.ps1
+```
+
+Additional automation scripts will be added as the platform evolves.
+
+---
+
+# Current Progress
+
+## Completed
+
+- ✅ Repository Setup
+- ✅ Olist Dataset Download
+- ✅ Source System Analysis
+- ✅ Google Cloud Project
+- ✅ Cloud SDK Configuration
+- ✅ Required APIs Enabled
+- ✅ Google Cloud Storage Bucket Created
+
+---
+
+## Next Milestone
+
+Upload the raw Olist datasets into the Data Lake.
+
+Target location:
+
+```text
+gs://gcp-alshaya-medallion-data/raw/olist/
+```
+
+After uploading the data, the Bronze layer implementation will begin using PySpark on Dataproc.
