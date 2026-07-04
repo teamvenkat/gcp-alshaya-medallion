@@ -345,3 +345,35 @@ from common.config import config
 rather than hardcoding values inside the application.
 
 This design improves maintainability and prepares the project for future multi-environment deployments.
+
+---
+
+## Logging
+
+A centralized logging framework has been implemented for the project.
+
+Location:
+
+```text
+src/common/logger.py
+```
+
+Features:
+
+- Console logging
+- File logging
+- Standardized log format
+- Reusable across all project modules
+
+Application logs are written to:
+
+```text
+logs/application.log
+```
+
+Future enhancements will include:
+
+- Log rotation
+- Separate audit logs
+- Structured JSON logging
+- Cloud Logging integration

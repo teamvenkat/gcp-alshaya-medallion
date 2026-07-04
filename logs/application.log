@@ -1,0 +1,4 @@
+2026-07-04 22:52:37 | INFO     | __main__ | Application started.
+2026-07-04 22:52:37 | INFO     | __main__ | Logger initialized successfully.
+2026-07-04 22:52:37 | WARNING  | __main__ | This is a sample warning.
+2026-07-04 22:52:37 | ERROR    | __main__ | This is a sample error.
