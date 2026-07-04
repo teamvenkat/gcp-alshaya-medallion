@@ -377,3 +377,23 @@ Future enhancements will include:
 - Separate audit logs
 - Structured JSON logging
 - Cloud Logging integration
+
+
+---
+
+## File Validation
+
+The ingestion framework validates source files before uploading them to Google Cloud Storage.
+
+Current validation checks include:
+
+- File existence
+- File type (.csv)
+- Non-empty file
+
+The validation framework has been designed to support future enhancements such as:
+
+- Schema validation
+- Header validation
+- Duplicate detection
+- Business rule validation
