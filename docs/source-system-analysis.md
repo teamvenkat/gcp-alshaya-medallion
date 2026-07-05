@@ -169,18 +169,3 @@ The Gold layer contains business-ready analytical datasets.
               Looker Studio
 ```
 
----
-
-# Implementation Roadmap
-
-- ✅ Dataset Downloaded
-- ✅ Source System Analysis
-- ⏳ Create GCP Project
-- ⏳ Create GCS Bucket
-- ⏳ Upload Raw Data
-- ⏳ Bronze Pipeline
-- ⏳ Silver Pipeline
-- ⏳ Gold Pipeline
-- ⏳ BigQuery
-- ⏳ Airflow
-- ⏳ Dashboard
