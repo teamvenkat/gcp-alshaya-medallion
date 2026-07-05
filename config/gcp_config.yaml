@@ -39,3 +39,9 @@ gcs:
 ingestion:
   load_type: FULL
   watermark_column: null
+
+
+
+upload:
+  max_retries: 3
+  retry_delay_seconds: 5
